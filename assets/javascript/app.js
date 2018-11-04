@@ -1,5 +1,5 @@
 $(document).ready(function() {
-   
+    var quizInterval = null;
     var convertedTime = 0; 
     var timerRunning = false;
     var timerInterval = null;
@@ -19,25 +19,9 @@ $(document).ready(function() {
            },
            count: function(){
                timerObject.time--;
-            //    convertedTime = timerObject.timeConverter(timerObject.time);
                $("#timer").text("Seconds Remaining: " + timerObject.time);
            },
-    //        timeConverter: function(t){
-    //         var minutes = Math.floor(t / 60);
-    //     var seconds = t - (minutes * 60);
     
-    //     if (seconds < 10) {
-    //       seconds = "0" + seconds;
-    //     }
-    
-    //     if (minutes === 0) {
-    //       minutes = "00";
-    //     }
-    //     else if (minutes < 10) {
-    //       minutes = "0" + minutes;
-    //     }
-    //     return minutes + ":" + seconds;
-    //   }
     };
         var i = 0;
         var qcount = 0;
@@ -186,8 +170,8 @@ $(document).ready(function() {
     
     function beginQuiz(){
         beginDisplay();
-        var quizInterval = setInterval(beginDisplay, 16000);
-        // clearInterval(quizInterval);
+        quizInterval = setInterval(beginDisplay, 16000);
+        
         
     };
     function beginDisplay(){
@@ -209,7 +193,14 @@ $(document).ready(function() {
         counterFunc();
         displayRecord();
         // checkAnswers();
-        showAns = setTimeout(displayResults, 11000);
+        
+        if(qcount>8){
+            clearInterval(quizInterval);
+            displayScore();
+        }else{
+            showAns = setTimeout(displayResults, 11000);
+        }
+
     }; 
     // displayScore();
 
@@ -235,7 +226,7 @@ $(document).ready(function() {
     
                 if (isCorrect){
                     $("#questionNum").html("Congrats! That's Correct!");
-                }else{$("#questionNum").html("Hell to tha Naw Bruh!");}
+                }else{$("#questionNum").html("Nope!");}
                 
                 $(".main2").html("The correct answer is: "+ questionsArray[qcount].correctanswer);
                 
@@ -287,7 +278,6 @@ $(document).ready(function() {
        console.log("Timer object.time: " + timerObject.time + " ");
         if (timerObject.time===0){
             qcount++;
-            numBlank++;
             questionFinished = false;
             console.log(qcount);
             console.log(questionFinished);
@@ -296,10 +286,11 @@ $(document).ready(function() {
     };
     
     function displayScore (){ 
-            $("#questionNum").html("Your Score:");
-            $("#questionString").html("Number Correct: " + numCorrect);
-            $(".main3").html("Number Incorrect: " + numIncorrect );
-            $(".main4").html("Number Unanswered" + numBlank); 
+        timerObject.reset();
+        $("#questionNum").html("Your Score:");
+        $("#questionString").html("Number Correct: " + numCorrect);
+        $(".main3").html("Number Incorrect: " + numIncorrect );
+        $(".main4").html("Number Unanswered" + numBlank); 
     };
     
     $("#nextButton").on("click", function Results(){
