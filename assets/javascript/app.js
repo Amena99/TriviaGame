@@ -5,7 +5,7 @@ $(document).ready(function() {
     var timerInterval = null;
     var userclick = false;
        var timerObject = {
-           time: 11,
+           time: 21,
            start: function(){
             if (!timerRunning){
                 timerInterval = setInterval(timerObject.count, 1000);
@@ -14,13 +14,15 @@ $(document).ready(function() {
            reset: function(){
                clearInterval(timerInterval);
                timerRunning = false;
-               timerObject.time = 11;
+               timerObject.time = 21;
                $("#timer").text(" ");
            },
            count: function(){
-               timerObject.time--;
+                // if (timerObject.time>0){
+                timerObject.time--;
                $("#timer").text("Seconds Remaining: " + timerObject.time);
-           },
+                // }
+            },
     
     };
         var i = 0;
@@ -32,6 +34,7 @@ $(document).ready(function() {
         var radios = document.getElementsByTagName("input");
         var questionFinished = false;
         var showAns = null;
+        var countUp = null;
         var questionsArray = [
             {
                 question: "Which of the following presidents is not on Mount Rushmore?",
@@ -139,7 +142,7 @@ $(document).ready(function() {
             },
                 correctanswer: "B. Lake Victoria",
                 answerKey: "b",
-                embed_url: "http://www.grandtoursafrica.com/wp-content/uploads/2018/02/lake-victoria-approaching-musambwa-island.gif",
+                embed_url: "https://static1.squarespace.com/static/5b88974731d4df1ac824c450/5b8de20c4d7a9cd1f8f9801c/5b8de4ae40ec9a2651f1e361/1536037474875/ff026c9f723ec772-bay_victoria.gif?format=1000w",
             },
             {
                 question: "What is the right way to spell the capital of Hungary?",
@@ -151,14 +154,14 @@ $(document).ready(function() {
             },
                 correctanswer: "D. Budapest",
                 answerKey: "d",
-                embed_url: "http://www.grandtoursafrica.com/wp-content/uploads/2018/02/lake-victoria-approaching-musambwa-island.gif",
+                embed_url: "https://media.giphy.com/media/BfuFjFohFnfLG/giphy.gif",
             },
         ];
     
     loadStart();
      function loadStart(){
          $(".main1").append('<h2 id="questionNum">Geography Trivia!</h2>');
-         $(".main3").html('<button id="startButton">Start</button>');  
+         $(".main3").html('<button class="startButton">Start</button>');  
          $("#timer").hide();
      };
     
@@ -166,12 +169,14 @@ $(document).ready(function() {
     //Appends the radio buttons, labels, and the question and choices. 
     
     
-    $("#startButton").on("click", beginQuiz);
+    $(".startButton").on("click", beginQuiz);
     
     function beginQuiz(){
+        qcount=0;
+        $(".main4").empty();
+        $(".main5").empty();
         beginDisplay();
-        quizInterval = setInterval(beginDisplay, 16000);
-        
+        quizInterval = setInterval(beginDisplay, 26000);
         
     };
     function beginDisplay(){
@@ -189,23 +194,24 @@ $(document).ready(function() {
         $(".main3").append('<div class="form-check num4"></div>');
         $(".num4").html('<input class="form-check-input fourth" type="radio" name="exampleRadios" id="exampleRadiosd" value="d">');
         $(".num4").append('<label class="form-check-label" id="choiceNum4" for="exampleRadiosd"></label>');
-        
-        counterFunc();
+        showAns = setTimeout(displayResults, 21000);
+        countUp = setTimeout(counterFunc, 22000); 
         displayRecord();
-        // checkAnswers();
+          
         
-        if(qcount>8){
-            clearInterval(quizInterval);
-            displayScore();
-        }else{
-            showAns = setTimeout(displayResults, 11000);
-        }
-
+        // }else{
+            
+        // }
     }; 
-    // displayScore();
 
 
     function displayRecord () {
+        if(qcount===10){
+            clearInterval(quizInterval);
+            clearTimeout(showAns);
+            clearTimeout(countUp);
+            displayScore();
+        } else {
         console.log("Firing displayRecord()");
         $("#questionNum").html("Question #" + (qcount+1));
         $("#questionString").text( questionsArray[qcount].question );
@@ -216,7 +222,8 @@ $(document).ready(function() {
         $("input[name=exampleRadios]").prop('checked', false);
         timerObject.reset();
         timerObject.start();   
-        };
+        }
+    };
     
         function displayResults(){
             var isCorrect = checkAnswers();
@@ -226,12 +233,12 @@ $(document).ready(function() {
     
                 if (isCorrect){
                     $("#questionNum").html("Congrats! That's Correct!");
-                }else{$("#questionNum").html("Nope!");}
+                }else{$("#questionNum").html("Try Again!");}
                 
                 $(".main2").html("The correct answer is: "+ questionsArray[qcount].correctanswer);
                 
-                $(".main3").html("<embed src='"+questionsArray[qcount].embed_url+"' />");
-                qcount++;
+                $(".main3").html("<embed src='"+questionsArray[qcount].embed_url+"' width='"+300+"' height='"+200+"'/>");
+                // qcount++;
         };    
 
 
@@ -243,7 +250,7 @@ $(document).ready(function() {
             var isAnswer = false;
             //go thru all radios 
             for (var i=0; i<radios.length; i++) {
-                //if any radio is selected add the value to ansArr
+                //if any radio is selected add the value to ansArray
                 if (radios[i].type === 'radio' && radios[i].checked){
                     value = radios[i].value;
                     console.log("This is the value of radio button: " + value);
@@ -268,20 +275,12 @@ $(document).ready(function() {
             }
             console.log(isAnswer);
             return isAnswer;
-        
-        
     };
 
-    
-
     function counterFunc(){
-       console.log("Timer object.time: " + timerObject.time + " ");
-        if (timerObject.time===0){
+        if (qcount<=9){
             qcount++;
-            questionFinished = false;
-            console.log(qcount);
-            console.log(questionFinished);
-            displayResults();
+            // displayResults();
         }
     };
     
@@ -290,12 +289,10 @@ $(document).ready(function() {
         $("#questionNum").html("Your Score:");
         $("#questionString").html("Number Correct: " + numCorrect);
         $(".main3").html("Number Incorrect: " + numIncorrect );
-        $(".main4").html("Number Unanswered" + numBlank); 
+        $(".main4").html("Number Unanswered: " + numBlank); 
+        $(".main5").html('<button class="startButton">Play Again!</button>');
+        $(".startButton").on("click", beginQuiz);
     };
-    
-    $("#nextButton").on("click", function Results(){
-        console.log("Entered the showresults function");
-    });
     
        
     });

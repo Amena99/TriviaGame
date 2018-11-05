@@ -13,10 +13,12 @@ body{
 }
 .main1,
 .main2,
-.main3{
+.main3,
+.main4,
+.main5{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    /* margin-left: 30px; */
     text-align: center;
+    margin-top: 20px;
 }
 
 .main1{
@@ -24,16 +26,11 @@ body{
     font-weight: bold;
 }
 .main2,
-{
-    margin-top: 20px;
-    text-align: center;
-}
-.main3
-{
-    margin-top: 20px;
-    /* padding-left:300px; */
-    text-align: center;
-
+#score3, 
+#score4,
+#score5{
+    font-size: 20px;
+    font-weight: bold;
 }
 #startButton{
     margin-left:40px;
@@ -45,7 +42,7 @@ body{
     font-size: 15px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-#gif{
+.gif{
     width: 200px;
     height: 300px;
     text-align: center;
