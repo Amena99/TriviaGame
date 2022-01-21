@@ -58,7 +58,7 @@ $(document).ready(function() {
             },
                 correctanswer: "D. Brazil",
                 answerKey: "d",
-                embed_url: "https://imgur.com/jJgELot",
+                embed_url: "https://media4.giphy.com/media/bIqdxoOVJ2oak/giphy.gif",
             },
             {
                 question: "What is the Polish city known to Germans as Danzig?",
