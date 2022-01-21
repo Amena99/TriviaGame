@@ -58,7 +58,7 @@ $(document).ready(function() {
             },
                 correctanswer: "D. Brazil",
                 answerKey: "d",
-                embed_url: "http://bestanimations.com/Flags/SouthAmerica/Brazil/brazilian-flag-animated-gif-18.gif",
+                embed_url: "https://imgur.com/jJgELot",
             },
             {
                 question: "What is the Polish city known to Germans as Danzig?",
@@ -70,7 +70,7 @@ $(document).ready(function() {
             },
                 correctanswer: "B. Gdańsk",
                 answerKey: "b",
-                embed_url: "http://szukamy.org/wp-content/uploads/2017/05/15645349_1430075520336395_807456040_n.gif",//not working
+                embed_url: "https://imgur.com/aUJegiI",//not working
             },
             {
                 question: "What tiny principality lies between Spain and France?",
