@@ -5,7 +5,7 @@ $(document).ready(function() {
     var timerInterval = null;
     var userclick = false;
        var timerObject = {
-           time: 21,
+           time: 11,
            start: function(){
             if (!timerRunning){
                 timerInterval = setInterval(timerObject.count, 1000);
@@ -14,7 +14,7 @@ $(document).ready(function() {
            reset: function(){
                clearInterval(timerInterval);
                timerRunning = false;
-               timerObject.time = 21;
+               timerObject.time = 11;
                $("#timer").text(" ");
            },
            count: function(){
@@ -70,7 +70,7 @@ $(document).ready(function() {
             },
                 correctanswer: "B. Gdańsk",
                 answerKey: "b",
-                embed_url: "http://www.kirklewski.com/upload/news/52-7-raw.gif",
+                embed_url: "http://szukamy.org/wp-content/uploads/2017/05/15645349_1430075520336395_807456040_n.gif",//not working
             },
             {
                 question: "What tiny principality lies between Spain and France?",
@@ -94,7 +94,7 @@ $(document).ready(function() {
             },
                 correctanswer: "B. New Delhi",
                 answerKey: "b",
-                embed_url: "https://media.giphy.com/media/l2YWBnlBuAzVNta4o/giphy.gif",
+                embed_url: "https://media.giphy.com/media/l2YWBnlBuAzVNta4o/giphy.gif", //not working
             },
             {
                 question: "How many sovereign states are members of the United Nations?",
@@ -118,7 +118,7 @@ $(document).ready(function() {
             },
                 correctanswer: "D. Greenland",
                 answerKey: "d",
-                embed_url: "https://media.giphy.com/media/WaPxDPoI4iIDK/giphy.gif",
+                embed_url: "https://media.giphy.com/media/WaPxDPoI4iIDK/giphy.gif", //not working
             },
             {
                 question: "Which German city is located on the River Isar?",
@@ -130,7 +130,7 @@ $(document).ready(function() {
             },
                 correctanswer: "A. Munich",
                 answerKey: "a",
-                embed_url: "https://media.giphy.com/media/xUySTYL706E8EVBYru/giphy.gif",
+                embed_url: "https://media.giphy.com/media/xUySTYL706E8EVBYru/giphy.gif", //not working
             },
             {
                 question: "What is the largest lake in the African continent?",
