@@ -70,7 +70,7 @@ $(document).ready(function() {
             },
                 correctanswer: "B. Gdańsk",
                 answerKey: "b",
-                embed_url: "https://imgur.com/aUJegiI",//not working
+                embed_url: "https://thumbs.gfycat.com/OrdinaryEqualGoat-size_restricted.gif",
             },
             {
                 question: "What tiny principality lies between Spain and France?",
