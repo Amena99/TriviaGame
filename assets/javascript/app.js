@@ -94,7 +94,7 @@ $(document).ready(function() {
             },
                 correctanswer: "B. New Delhi",
                 answerKey: "b",
-                embed_url: "https://media.giphy.com/media/l2YWBnlBuAzVNta4o/giphy.gif", //not working
+                embed_url: "https://media.giphy.com/media/l2YWBnlBuAzVNta4o/giphy.gif", 
             },
             {
                 question: "How many sovereign states are members of the United Nations?",
@@ -118,7 +118,7 @@ $(document).ready(function() {
             },
                 correctanswer: "D. Greenland",
                 answerKey: "d",
-                embed_url: "https://media.giphy.com/media/WaPxDPoI4iIDK/giphy.gif", //not working
+                embed_url: "https://media.giphy.com/media/WaPxDPoI4iIDK/giphy.gif", 
             },
             {
                 question: "Which German city is located on the River Isar?",
@@ -130,8 +130,7 @@ $(document).ready(function() {
             },
                 correctanswer: "A. Munich",
                 answerKey: "a",
-                embed_url: "https://media.giphy.com/media/xUySTYL706E8EVBYru/giphy.gif", //not working
-            },
+                embed_url: "https://media.giphy.com/media/xUySTYL706E8EVBYru/giphy.gif", 
             {
                 question: "What is the largest lake in the African continent?",
                 answers: {
