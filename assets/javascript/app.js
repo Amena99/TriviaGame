@@ -176,7 +176,7 @@ $(document).ready(function() {
         $(".main4").empty();
         $(".main5").empty();
         beginDisplay();
-        quizInterval = setInterval(beginDisplay, 26000);
+        quizInterval = setInterval(beginDisplay, 16000);
         
     };
     function beginDisplay(){
@@ -194,8 +194,8 @@ $(document).ready(function() {
         $(".main3").append('<div class="form-check num4"></div>');
         $(".num4").html('<input class="form-check-input fourth" type="radio" name="exampleRadios" id="exampleRadiosd" value="d">');
         $(".num4").append('<label class="form-check-label" id="choiceNum4" for="exampleRadiosd"></label>');
-        showAns = setTimeout(displayResults, 21000);
-        countUp = setTimeout(counterFunc, 22000); 
+        showAns = setTimeout(displayResults, 10000);
+        countUp = setTimeout(counterFunc, 11000); 
         displayRecord();
           
         
